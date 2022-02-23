@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+
+typedef long long ll;
+
+int main() {
+    int n;
+    scanf("%d", &n);
+
+    for (int i = 1; i <= n; i++) {
+        int count = 1, curr = 1;
+        printf("1");
+        for (int j = 3; count < i; j += 2) {
+            printf("%d", j);
+            count++;
+            curr = j;
+        }
+        count = 1;
+        for (int j = curr - 2; count < i - 1; j -= 2) {
+            printf("%d", j);
+            count++;
+        }
+        if (i > 1) printf("1\n");
+        else printf("\n");
+    }
+}
