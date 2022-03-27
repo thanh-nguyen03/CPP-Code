@@ -15,7 +15,7 @@ const long long mod = 1e9 + 7;
 int a[15][15], visited[15][15], n, flag = 0;
 set<string> ans;
 
-void dfs(int i, int j, string s) {
+void backtrack(int i, int j, string s) {
     if (i == n || j == n || i < 0 || j < 0) return;
     if (a[i][j] == 0) return;
     if (visited[i][j]) return;
@@ -25,10 +25,10 @@ void dfs(int i, int j, string s) {
         return;
     }
     visited[i][j] = 1;
-    dfs(i + 1, j, s + "D");
-    dfs(i, j + 1, s + "R");
-    dfs(i, j - 1, s + "L");
-    dfs(i - 1, j, s + "U");
+    backtrack(i + 1, j, s + "D");
+    backtrack(i, j + 1, s + "R");
+    backtrack(i, j - 1, s + "L");
+    backtrack(i - 1, j, s + "U");
     visited[i][j] = 0;
 }
 
@@ -41,7 +41,7 @@ void run_test_case() {
     }
     memset(visited, 0, sizeof(visited));
     flag = 0;
-    dfs(0, 0, "");
+    backtrack(0, 0, "");
     if (!flag) cout << -1;
     else {
         for (auto x : ans) cout << x << " ";
