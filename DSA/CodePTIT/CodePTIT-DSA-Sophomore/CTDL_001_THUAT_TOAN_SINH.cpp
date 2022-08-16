@@ -12,26 +12,27 @@ const long long mod = 1e9 + 7;
 #define tester() int t; cin >> t; while(t--)
 #define MAX 1000000
 
-int n, a[MAX];
+void binary(int pos, string s) {
+    if (pos == 0) {
+        for (int i = 0; i < s.length(); i++) {
+            if (s[i] != s[s.length() - i - 1]) return;
+        }
+        for (auto i:s) cout << i << " ";
+        cout << endl;
+    }
+    else {
+        binary(pos - 1, s + "0");
+        binary(pos - 1, s + "1");
+    }
+}
+
+int n;
 void run_test_case() {
     cin >> n;
-    map<int, int> mp;
-    for (int i = 0; i < n; i++) {
-        cin >> a[i];
-        mp[a[i]]++;
-    }
-    for (int i = 0; i < n; i++) {
-        if (mp[a[i]] > 1) {
-            cout << a[i] << endl;
-            return;
-        }
-    }
-
-    cout << "NO" << endl;
+    binary(n, ""); 
 }
 
 int main() {
     faster();
-    tester() 
         run_test_case();
 }
