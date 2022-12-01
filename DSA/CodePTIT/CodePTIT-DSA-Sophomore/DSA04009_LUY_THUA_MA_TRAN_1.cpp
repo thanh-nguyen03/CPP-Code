@@ -16,7 +16,7 @@ const long long mod = 1e9 + 7;
 matrix I, a;
 ll n, x;
 void base() {
-    I.resize(n, vll(n, 0));
+    I.assign(n, vll(n, 0));
     for (int i = 0; i < n; i++) {
         I[i][i] = 1;
     }
